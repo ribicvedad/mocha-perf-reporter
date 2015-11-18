@@ -1,5 +1,5 @@
 var Table = require('cli-table');
-
+var fs = require('fs')
 exports = module.exports = Perf;
 
 exports.colors = {
