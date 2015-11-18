@@ -22,6 +22,8 @@ var colWidths = [
 , parseInt( termW * 0.45 * 0.3333333 )
 ];
 
+var nameDuration = []; 
+
 function Perf( runner ){
   var this_ = this;
 
@@ -71,7 +73,11 @@ function Perf( runner ){
           if ( diff < 5 ) colorType = 'medium';
           else colorType = 'slow';
         }
-
+        
+        nameDuration.push(testName + ' ' + test.duration);
+        nameDuration.toString();
+        nameDuration.join("\n")
+        
         var error;
         if ( test.error ){
           testName = color( 'error', testName );
@@ -96,6 +102,7 @@ function Perf( runner ){
       });
 
       console.log( table.toString() );
+      fs.writeFile('loadResults.txt', nameDuration , 'utf8');
     });
   });
 
