@@ -22,7 +22,13 @@ var colWidths = [
 , parseInt( termW * 0.45 * 0.3333333 )
 ];
 
-var nameDuration = []; 
+var outputString = "test\tduration\n";
+//var nameDuration = ["test", "\t", "duration"]; 
+//nameDuration.push("\n");
+//var nameDuration = [];
+//var nameDuration.push(outputString);
+var testOutput
+var testNumber = 1
 
 function Perf( runner ){
   var this_ = this;
@@ -73,11 +79,12 @@ function Perf( runner ){
           if ( diff < 5 ) colorType = 'medium';
           else colorType = 'slow';
         }
-        
-        nameDuration.push(testName + ' ' + test.duration);
-        nameDuration.toString();
-        nameDuration.join("\n")
-        
+
+        //nameDuration.push("T" + testNumber + "\t" + test.duration + "\n");
+        outputString += "T" + testNumber + "\t" + test.duration + "\n";
+        //testOutput = nameDuration.join(" ");
+        testNumber += 1
+
         var error;
         if ( test.error ){
           testName = color( 'error', testName );
@@ -102,7 +109,7 @@ function Perf( runner ){
       });
 
       console.log( table.toString() );
-      fs.writeFile('loadResults.txt', nameDuration , 'utf8');
+      fs.writeFile('data.tsv', outputString , 'utf8');
     });
   });
 
