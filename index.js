@@ -23,10 +23,6 @@ var colWidths = [
 ];
 
 var outputString = "test\tduration\n";
-//var nameDuration = ["test", "\t", "duration"]; 
-//nameDuration.push("\n");
-//var nameDuration = [];
-//var nameDuration.push(outputString);
 var testOutput
 var testNumber = 1
 
@@ -79,10 +75,8 @@ function Perf( runner ){
           if ( diff < 5 ) colorType = 'medium';
           else colorType = 'slow';
         }
-
-        //nameDuration.push("T" + testNumber + "\t" + test.duration + "\n");
+        
         outputString += "T" + testNumber + "\t" + test.duration + "\n";
-        //testOutput = nameDuration.join(" ");
         testNumber += 1
 
         var error;
